@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = 'ushna1923/sweet-savory-predictor'
+        IMAGE_NAME = 'ushna1923/sweet-savory-predictor-classtask3'
         REGISTRY_CREDENTIALS = 'e16fa279-f0bf-4bed-bd20-eeefaed24468'
     }
 
@@ -16,7 +16,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build("$IMAGE_NAME:latest")
+                    echo
                 }
             }
         }
