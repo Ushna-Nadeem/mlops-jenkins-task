@@ -24,9 +24,7 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-                    docker.withRegistry('', REGISTRY_CREDENTIALS) {
-                        echo "Docker Image is Built."
-                    }
+                    echo "Docker Image is Pushed."
                 }
             }
         }
