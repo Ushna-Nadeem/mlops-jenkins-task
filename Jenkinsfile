@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = 'ushna1923/sweet-savory-predictor-classtask3'
+        IMAGE_NAME = 'ushna1923/sweet-savory-predictor'
         REGISTRY_CREDENTIALS = 'e16fa279-f0bf-4bed-bd20-eeefaed24468'
     }
 
@@ -27,14 +27,6 @@ pipeline {
                     docker.withRegistry('', REGISTRY_CREDENTIALS) {
                         docker.image("$IMAGE_NAME:latest").push()
                     }
-                }
-            }
-        }
-
-        stage('Clean Up') {
-            steps {
-                script {
-                    sh 'docker rmi $IMAGE_NAME:latest'
                 }
             }
         }
