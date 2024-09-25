@@ -16,7 +16,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    echo "Docker Image is Built."
+                    docker.build("$IMAGE_NAME:latest")
                 }
             }
         }
@@ -24,7 +24,9 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-                    echo "Docker Image is Pushed."
+                    docker.withRegistry('', REGISTRY_CREDENTIALS) {
+                        docker.image("$IMAGE_NAME:latest").push()
+                    }
                 }
             }
         }
